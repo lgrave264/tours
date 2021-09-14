@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import Load from '../components/Loadinggif';
 import Error from '../components/Erorr';
-const check = 'https://api.github.com/users/QuincyLarson';
+import Content from '../components/Content';
+const check = 'https://course-api.com/react-tours-project';
 
 const Workinghour = () => {
     const [isLoading, setIsLoading]= useState(true)
@@ -33,7 +34,7 @@ const Workinghour = () => {
   }
 
   return <div>
-    example
+    <Content/>
   </div>;
 };
 
