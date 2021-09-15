@@ -1,5 +1,5 @@
-import React, {useState} from 'react';
-import Errorloading from './components/errorloading';
+import React from 'react';
+import Errorloading from './components/Errorloading';
 
 function App(){
     
