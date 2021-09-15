@@ -3,59 +3,46 @@ import Load from '../components/Loadinggif';
 import Error from '../components/Erorr';
 import Tour from './Tour';
 
-
+  const url = 'https://course-api.com/react-tours-project';
 const Errorloading = () => {
-    const url = 'https://course-api.com/react-tours-project';
-    const [isLoading, setIsLoading]= useState(false);
+  
+    const [loading, setLoading]= useState(false);
     const [isError, setIsError]= useState(false);
-    const [tourSpots, setTourSpots] = useState([]);
+    const [tourSpots, setTourSpots] = React.useState([]);
     
-    const getData = async () => {
-        const response = await fetch(url);
-        const spots = await response.json();
-        setTourSpots(spots);
-        
-        //console.log(spots)
-        //console.log(response+'looop')
-        
-    }
-
-    
-
     useEffect(()=>{
         getData()
-        setIsLoading(false)
-        // .then(setIsLoading(false))
-        // .catch((error) =>{
-        //     console.log(error)
-        //     setIsError(true)
-        // })
+        console.log('useEffect')
     },[])
-    // const  {id,name,info,image}= tourSpots;
-    // console.log(tourSpots)
+    
+    const getData = async()=>{
+        try{
+          setLoading(false)
+          const response = await fetch(url);
+          const tours = await response.json();
+          setLoading(false);
+          setTourSpots(tours);
+        }
+        catch(error){
+          setIsError(true)
+          console.log(error)
+        }      
+    }
 
     
-    if(isError){
-    return(
-        <div>
-            <h1><Error/></h1>
-        </div>
-    )
-    }
-  if(isLoading){
-    return(
-      <div>
-        <Load/>
-      </div>
-    )
-  }
 
-  return (
-    <>
-        <p>Our Tours</p>
-        <Tour  tour={tourSpots}></Tour>
-    </>
-)
+
+    if(isError)
+      return <div><h1><Error/></h1></div>
+    else if(loading)
+      return<div><Load/></div>
+    else{
+      console.log(tourSpots)
+    return <div> 
+        <Tour tours={tourSpots} />
+      </div>
+    }
+
     }
     
 
