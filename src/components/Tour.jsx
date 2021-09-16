@@ -1,25 +1,24 @@
 import React from 'react'
 // import tourSpots from '../components/Errorloading';
 
-const Tour = ({tours}) => {
-    function remove(id){
-        
-    }
+const Tour = ({tours,remove}) => {
     return (
         <div>
             <h1 id='pageHeader'>Our Tours</h1>
             <hr/>
             {tours.map((tour) => {
-                const {id, name, image, info} = tour;
+                const {id, name, image, info, price} = tour;
                 return (
-                    <div key={id}>
-                        <h1>{name}</h1>
-                        <hr/>
-                        <img src={image} alt={id} />
+                    <article key={id}>
+                        <div>
+                            <h4 className='name'>{name}</h4><h4 className='price'>${price}</h4>
+                        </div>
+                        <img src={image} alt={id} className='images'/>
                         <hr />
                         <h5>{info}</h5>
-                        <button onClick={remove(id)}>Not Interested</button>
-                    </div>
+                        <button id='not' onClick={()=>{remove(id)}}>Not Interested</button>
+                        <hr></hr>
+                    </article>
                 )
             })}
         </div>

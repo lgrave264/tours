@@ -13,3 +13,24 @@ body{
     background-attachment: fixed;
     background-size: cover;
 }
+
+.images{
+    height: 23.125rem;
+    width: 34.75rem;
+    margin-top: 1rem;
+}
+
+.price{
+    color:aqua;
+    float:right;
+}
+
+.name{
+    float: left;
+}
+
+#not{
+    border: red 2px solid;
+    color: red;
+    background-color: transparent;
+}

@@ -9,6 +9,9 @@ const Errorloading = () => {
     const [loading, setLoading]= useState(false);
     const [isError, setIsError]= useState(false);
     const [tourSpots, setTourSpots] = React.useState([]);
+    const removeTrip = (id)=>{
+      setTourSpots(tourSpots.filter((tour)=>tour.id !== id))
+    }
     
     useEffect(()=>{
         getData()
@@ -39,7 +42,7 @@ const Errorloading = () => {
     else{
       console.log(tourSpots)
     return <div> 
-        <Tour tours={tourSpots} />
+        <Tour tours={tourSpots} remove={removeTrip}/>
       </div>
     }
 
